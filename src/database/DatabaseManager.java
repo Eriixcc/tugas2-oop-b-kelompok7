@@ -63,12 +63,41 @@ public class DatabaseManager {
 
             // Contoh (hapus dan ganti dengan tabel kalian):
             stmt.execute(
-                "CREATE TABLE IF NOT EXISTS contoh ("
-                + "  id TEXT PRIMARY KEY,"
-                + "  nama TEXT NOT NULL,"
-                + "  created_at TEXT DEFAULT (datetime('now'))"
+                "CREATE TABLE IF NOT EXISTS users ("
+                + "  id TEXT PRIMARY KEY,,"
+                + "  name TEXT NOT NULL,"
+                + "  email TEXT NOT NULL UNIQUE,"
+                + "  phone TEXT,"
+                + "  role TEXT DEFAULT 'buyer',"
+                + "  created_at  TEXT DEFAULT (datetime('now'))"
                 + ")"
             );
+
+            stmt.execute(
+                "CREATE TABLE IF NOT EXISTS venues ("
+                + "  id              TEXT PRIMARY KEY," 
+                + "  name            TEXT NOT NULL," 
+                + "  address         TEXT NOT NULL,"
+                + "  max_capacity    INTEGER NOT NULL," 
+                + "  created_at      TEXT DEFAULT (datetime('now'))" 
+                + ");"
+            );
+
+            stmt.execute(
+                "CREATE TABLE IF NOT EXISTS events (" 
+                + "  id TEXT PRIMARY KEY," 
+                + "  type   TEXT NOT NULL," 
+                + "  name   TEXT NOT NULL," 
+                + "  venue_id        TEXT NOT NULL," 
+                + "  organizer_id    TEXT NOT NULL,"  
+                + "  date            TEXT NOT NULL,"
+                + "  base_price      REAL NOT NULL," 
+                + "  created_at      TEXT DEFAULT (datetime('now'))," 
+                + "  FOREIGN KEY (venue_id) REFERENCES venues(id)," 
+                + "  FOREIGN KEY (organizer_id) REFERENCES users(id)" 
+                + ");"
+            );
+
 
             System.out.println("Database berhasil diinisialisasi.");
 
