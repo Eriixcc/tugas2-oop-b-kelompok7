@@ -63,11 +63,10 @@ public class DatabaseManager {
 
             // Contoh (hapus dan ganti dengan tabel kalian):
             stmt.execute(
-                "CREATE TABLE IF NOT EXISTS contoh ("
-                + "  id TEXT PRIMARY KEY,"
-                + "  nama TEXT NOT NULL,"
-                + "  created_at TEXT DEFAULT (datetime('now'))"
-                + ")"
+                "CREATE TABLE IF NOT EXISTS users (" +
+                "id TEXT PRIMARY KEY, name TEXT NOT NULL, email TEXT NOT NULL UNIQUE, " +
+                "phone TEXT, role TEXT DEFAULT 'buyer', created_at TEXT DEFAULT (datetime('now'))" +
+                ");"
             );
 
             System.out.println("Database berhasil diinisialisasi.");
