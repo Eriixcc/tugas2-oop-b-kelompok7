@@ -98,7 +98,41 @@ public class DatabaseManager {
                 + ");"
             );
 
-            
+            stmt.execute(
+                "CREATE TABLE IF NOT EXISTS capacities ("
+                + "  event_id TEXT NOT NULL,"
+                + "  category TEXT NOT NULL,"
+                + "  total_capacity INTEGER NOT NULL,"
+                + "  remaining_capacity INTEGER NOT NULL,"
+                + "  PRIMARY KEY (event_id, category),"
+                + "  FOREIGN KEY (event_id) REFERENCES events(id) ON DELETE CASCADE"
+                + ");"
+            );
+
+            stmt.execute(
+                "CREATE TABLE IF NOT EXISTS tickets ("
+                + "  id TEXT PRIMARY KEY,"
+                + "  event_id TEXT NOT NULL,"
+                + "  category TEXT NOT NULL,"
+                + "  price REAL NOT NULL,"
+                + "  status TEXT DEFAULT 'valid'," 
+                + "  created_at TEXT DEFAULT (datetime('now')),"
+                + "  FOREIGN KEY (event_id) REFERENCES events(id)"
+                + ");"
+            );
+
+            stmt.execute(
+                "CREATE TABLE IF NOT EXISTS transactions ("
+                + "  id TEXT PRIMARY KEY,"
+                + "  user_id TEXT NOT NULL,"
+                + "  ticket_id TEXT NOT NULL,"
+                + "  type TEXT NOT NULL," 
+                + "  amount REAL NOT NULL,"
+                + "  created_at TEXT DEFAULT (datetime('now')),"
+                + "  FOREIGN KEY (user_id) REFERENCES users(id),"
+                + "  FOREIGN KEY (ticket_id) REFERENCES tickets(id)"
+                + ");"
+            );
 
             System.out.println("Database berhasil diinisialisasi.");
 
