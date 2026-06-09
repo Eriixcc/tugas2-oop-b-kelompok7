@@ -121,19 +121,6 @@ public class DatabaseManager {
                 + ");"
             );
 
-            stmt.execute(
-                "CREATE TABLE IF NOT EXISTS transactions ("
-                + "  id TEXT PRIMARY KEY,"
-                + "  user_id TEXT NOT NULL,"
-                + "  ticket_id TEXT NOT NULL,"
-                + "  type TEXT NOT NULL," 
-                + "  amount REAL NOT NULL,"
-                + "  created_at TEXT DEFAULT (datetime('now')),"
-                + "  FOREIGN KEY (user_id) REFERENCES users(id),"
-                + "  FOREIGN KEY (ticket_id) REFERENCES tickets(id)"
-                + ");"
-            );
-
             System.out.println("Database berhasil diinisialisasi.");
 
         } catch (SQLException e) {
