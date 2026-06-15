@@ -1,7 +1,6 @@
 package model;
 
 public abstract class Event {
-
     private String id;
     private String type;
     private String name;
@@ -14,7 +13,6 @@ public abstract class Event {
     }
 
     public Event(String id, String type, String name, String venueId, String organizerId, String date, double basePrice) {
-
         this.id = id;
         this.type = type;
         this.name = name;
@@ -28,8 +26,6 @@ public abstract class Event {
 
     public abstract String[] getAvailableCategories();
 
-    public abstract String getRefundPolicy();
-
     public String getId() {
         return id;
     }
@@ -42,7 +38,7 @@ public abstract class Event {
         return type;
     }
 
-    protected void setType(String type) {
+    public void setType(String type) {
         this.type = type;
     }
 
