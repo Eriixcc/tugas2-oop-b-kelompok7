@@ -26,10 +26,22 @@ public class UserHandler {
             throws Exception {
 
         String id = req.getPathParam("id");
+        User user = userService.getUser(id);
 
-        res.sendSuccess(
-                userService.getUser(id)
-        );
+        Map<String, Object> userData = new java.util.LinkedHashMap<>();
+        userData.put("id", user.getId());
+        userData.put("name", user.getName());
+        userData.put("email", user.getEmail());
+        userData.put("phone", user.getPhone());
+        userData.put("role", user.getRole());
+
+        if ("buyer".equalsIgnoreCase(user.getRole())) {
+            userData.put("summary", userService.getBuyerSummary(id));
+        } else if ("organizer".equalsIgnoreCase(user.getRole())) {
+            userData.put("summary", userService.getOrganizerSummary(id));
+        }
+
+        res.sendSuccess(userData);
     }
 
     public static void createUser(Request req, Response res)
