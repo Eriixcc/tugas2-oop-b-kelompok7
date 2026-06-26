@@ -19,7 +19,7 @@ Berikut adalah langkah-langkah untuk menjalankan server mulai dari proses *clone
 1. **Clone Repositori**
    Buka terminal atau command prompt dan jalankan perintah berikut:
    ```bash
-   git clone <URL_REPOSITORY>
+   git clone https://github.com/Eriixcc/tugas2-oop-b-kelompok7.git
    cd tugas2-oop-b-kelompok7
    ```
 
