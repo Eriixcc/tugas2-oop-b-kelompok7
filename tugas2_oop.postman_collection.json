@@ -1,0 +1,444 @@
+{
+  "info": {
+    "_postman_id": "bcf5b3d6-68b3-4f96-be99-df787e97d81a",
+    "name": "Tugas 2 OOP Kelompok 7",
+    "description": "Collection API untuk pengujian Tugas 2 OOP Kelompok 7 (Ticketing System)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Users",
+      "item": [
+        {
+          "name": "Get All Users",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get User Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/users/USR-ISI_ID_USER",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "USR-ISI_ID_USER"
+              ]
+            },
+            "description": "Ganti USR-ISI_ID_USER dengan ID User asli hasil dari Create User"
+          },
+          "response": []
+        },
+        {
+          "name": "Create Organizer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Bali Event Organizer\",\n  \"email\": \"info@balievent.id\",\n  \"phone\": \"081987654321\",\n  \"role\": \"organizer\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Buyer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kadek Surya\",\n  \"email\": \"kadek.surya@email.com\",\n  \"phone\": \"081234567890\",\n  \"role\": \"buyer\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update User",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Kadek Surya Diupdate\",\n  \"email\": \"kadek.surya.new@email.com\",\n  \"phone\": \"081234567899\",\n  \"role\": \"buyer\"\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/users/USR-ISI_ID_USER",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "users",
+                "USR-ISI_ID_USER"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "2. Venues",
+      "item": [
+        {
+          "name": "Get All Venues",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/venues",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "venues"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Venue Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/venues/VNU-ISI_ID_VENUE",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "venues",
+                "VNU-ISI_ID_VENUE"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Venue",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"GWK Cultural Park\",\n  \"address\": \"Jl. Raya Uluwatu, Ungasan, Badung, Bali\",\n  \"maxCapacity\": 8000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/venues",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "venues"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Update Venue",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"GWK Cultural Park (Renovated)\",\n  \"address\": \"Jl. Raya Uluwatu, Ungasan, Badung, Bali\",\n  \"maxCapacity\": 10000\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/venues/VNU-ISI_ID_VENUE",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "venues",
+                "VNU-ISI_ID_VENUE"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "3. Events",
+      "item": [
+        {
+          "name": "Get All Events",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/events",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Event Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/events/EVT-ISI_ID_EVENT",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "EVT-ISI_ID_EVENT"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Create Event Concert",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"concert\",\n  \"name\": \"Bali Music Festival 2026\",\n  \"venueId\": \"VNU-ISI_ID_VENUE\",\n  \"organizerId\": \"USR-ISI_ID_ORGANIZER\",\n  \"date\": \"2026-08-15\",\n  \"basePrice\": 250000,\n  \"capacity\": {\n    \"vip\": 100,\n    \"regular\": 500,\n    \"festival\": 1000\n  }\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/events",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "events"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Event Remaining Capacity",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/events/EVT-ISI_ID_EVENT/remaining-capacity",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "EVT-ISI_ID_EVENT",
+                "remaining-capacity"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Event Sales Report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/events/EVT-ISI_ID_EVENT/sales-report",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "events",
+                "EVT-ISI_ID_EVENT",
+                "sales-report"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "4. Tickets",
+      "item": [
+        {
+          "name": "Get All Tickets",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tickets",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tickets"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Get Ticket Details",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tickets/TKT-ISI_ID_TICKET",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tickets",
+                "TKT-ISI_ID_TICKET"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Purchase Ticket",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"eventId\": \"EVT-ISI_ID_EVENT\",\n  \"userId\": \"USR-ISI_ID_BUYER\",\n  \"category\": \"vip\",\n  \"quantity\": 2\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/api/tickets",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tickets"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "Refund Ticket",
+          "request": {
+            "method": "PUT",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/api/tickets/TKT-ISI_ID_TICKET/refund",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "api",
+                "tickets",
+                "TKT-ISI_ID_TICKET",
+                "refund"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:8080",
+      "type": "string"
+    }
+  ]
+}

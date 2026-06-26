@@ -1,0 +1,7 @@
+# Use this workspace to collaborate
+workspace:
+  id: 657b4737-6916-4356-8bb6-93e18a08422a
+
+localResources:
+  collections:
+    - ..\tugas2_oop.postman_collection.json

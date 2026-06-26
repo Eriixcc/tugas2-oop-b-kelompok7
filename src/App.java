@@ -7,6 +7,8 @@ import java.util.HashMap;
 import java.util.List;          
 import java.util.Map;
 
+import handler.*;
+
 public class App {
 
     public static void main(String[] args) throws Exception {
@@ -124,8 +126,29 @@ public class App {
         //   server.get("/api/events/{id}", ...);
         //   server.get("/api/events/ringkasan-harga", ...);
         // =============================================
+        // --- 1. Route untuk User ---
+        server.get("/api/users", UserHandler::getUsers);
+        server.get("/api/users/{id}", UserHandler::getUser);
+        server.post("/api/users", UserHandler::createUser);
+        server.put("/api/users/{id}", UserHandler::updateUser);
 
+        // --- 2. Route untuk Venue ---
+        server.get("/api/venues", VenueHandler::getVenues);
+        server.get("/api/venues/{id}", VenueHandler::getVenue);
+        server.post("/api/venues", VenueHandler::createVenue);
+        server.put("/api/venues/{id}", VenueHandler::updateVenue);
 
+        // --- 3. Route untuk Event ---
+        server.get("/api/events", EventHandler::getEvents);
+        server.get("/api/events/{id}", EventHandler::getEvent);
+        server.get("/api/events/{id}/remaining-capacity", EventHandler::getRemainingCapacity);
+        server.get("/api/events/{id}/sales-report", EventHandler::getSalesReport);
+        
+        // --- 4. Route untuk Ticket ---
+        server.get("/api/tickets", TicketHandler::getTickets);
+        server.get("/api/tickets/{id}", TicketHandler::getTicket);
+        server.post("/api/tickets", TicketHandler::purchaseTicket);
+        server.put("/api/tickets/{id}/refund", TicketHandler::refundTicket);
 
         // Jalankan server
         System.out.printf("Server berjalan di http://localhost:%d%n", port);
