@@ -23,12 +23,18 @@ public class VenueHandler {
     public static void getVenue(Request req, Response res)
             throws Exception {
 
-        String id =
-                req.getPathParam("id");
+        String id = req.getPathParam("id");
+        Venue venue = venueService.getVenue(id);
+        java.util.List<Map<String, Object>> events = venueService.eventsAtVenue(id);
 
-        res.sendSuccess(
-                venueService.getVenue(id)
-        );
+        Map<String, Object> data = new java.util.LinkedHashMap<>();
+        data.put("id", venue.getId());
+        data.put("name", venue.getName());
+        data.put("address", venue.getAddress());
+        data.put("maxCapacity", venue.getMaxCapacity());
+        data.put("events", events);
+
+        res.sendSuccess(data);
     }
 
     public static void createVenue(Request req, Response res)
