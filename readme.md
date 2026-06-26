@@ -1,96 +1,94 @@
 # REST API Manajemen Event dan Ticketing
 
-Proyek ini adalah tugas Pemrograman Berorientasi Obyek berupa REST API sederhana menggunakan Java, SQLite, Jackson, dan `com.sun.net.httpserver`. Sistem digunakan untuk mengelola user, venue, event, pembelian tiket, refund tiket, dan laporan penjualan.
+## 1. Deskripsi Singkat Proyek
 
-## Konsep OOP yang Digunakan
+Proyek ini adalah tugas Pemrograman Berorientasi Obyek (PBO) berupa REST API sederhana untuk **Ticketing System** menggunakan bahasa pemrograman Java. Sistem ini dibangun tanpa framework eksternal besar untuk server (menggunakan `com.sun.net.httpserver`), menggunakan database SQLite, serta Jackson untuk parsing JSON. Sistem dapat digunakan untuk mengelola user, venue, event, pembelian tiket, refund tiket, dan melihat laporan penjualan.
 
-- **Abstract class**: `Event` menjadi class induk untuk semua jenis event dan memiliki method abstract `calculateTicketPrice(String category)`.
-- **Inheritance**: `Concert`, `Seminar`, dan `SportMatch` mewarisi class `Event`.
-- **Interface**: `Refundable` hanya diimplementasikan oleh `Concert` dan `Seminar`.
-- **Polymorphism**: Harga tiket dihitung melalui pemanggilan `event.calculateTicketPrice(category)` sehingga hasilnya berbeda sesuai objek aslinya.
-- **Encapsulation**: Semua atribut model dibuat `private` dan diakses melalui getter dan setter.
-- **Exception handling**: Terdapat custom exception untuk data tidak ditemukan, tiket sold out, dan refund tidak diizinkan.
+Beberapa konsep OOP yang diimplementasikan:
+- **Abstract class**: `Event` sebagai class induk.
+- **Inheritance**: `Concert`, `Seminar`, dan `SportMatch` mewarisi `Event`.
+- **Interface**: `Refundable` yang diimplementasikan secara spesifik (misal pada `Concert`).
+- **Polymorphism**: Metode seperti perhitungan harga tiket di-override pada setiap child class.
+- **Encapsulation**: Atribut model diproteksi dengan *access modifier* `private` dan diakses melalui *getter/setter*.
+- **Exception handling**: Custom exception untuk menangani kasus spesifik (contoh: tiket sold out, not found, dsb).
 
-## Struktur Proyek
+## 2. Cara Menjalankan Server
 
-```text
-src/
-├── App.java
-├── database/DatabaseManager.java
-├── exception/
-├── handler/
-├── model/
-├── repository/
-├── server/
-└── service/
-```
+Berikut adalah langkah-langkah untuk menjalankan server mulai dari proses *clone* repositori hingga server berjalan.
 
-## Cara Menjalankan
+1. **Clone Repositori**
+   Buka terminal atau command prompt dan jalankan perintah berikut:
+   ```bash
+   git clone <URL_REPOSITORY>
+   cd tugas2-oop-b-kelompok7
+   ```
 
-Jalankan perintah berikut dari folder `src`.
+2. **Pindah ke Direktori `src`**
+   Pastikan Anda berada di direktori `src` sebelum melakukan kompilasi.
+   ```bash
+   cd src
+   ```
 
-### Windows
+3. **Kompilasi Kode Program**
+   Jalankan perintah kompilasi sesuai sistem operasi Anda (pastikan folder `lib` sejajar dengan `src` dan berisi file JAR yang dibutuhkan):
 
-```bash
-javac -cp ".;../lib/*" App.java model/*.java service/*.java repository/*.java handler/*.java exception/*.java database/*.java server/*.java
-java -cp ".;../lib/*" App
-```
+   **Windows:**
+   ```bash
+   javac -cp ".;../lib/*" App.java model/*.java service/*.java repository/*.java handler/*.java exception/*.java database/*.java server/*.java
+   ```
 
-### Linux / Mac
+   **Linux / Mac:**
+   ```bash
+   javac -cp ".:../lib/*" App.java model/*.java service/*.java repository/*.java handler/*.java exception/*.java database/*.java server/*.java
+   ```
 
-```bash
-javac -cp ".:../lib/*" App.java model/*.java service/*.java repository/*.java handler/*.java exception/*.java database/*.java server/*.java
-java -cp ".:../lib/*" App
-```
+4. **Jalankan Server**
+   **Windows:**
+   ```bash
+   java -cp ".;../lib/*" App
+   ```
 
-Server berjalan di:
+   **Linux / Mac:**
+   ```bash
+   java -cp ".:../lib/*" App
+   ```
 
-```text
-http://localhost:8080
-```
+5. **Server Berjalan**
+   Server akan berjalan secara lokal. Anda dapat mengujinya melalui browser, Curl, atau Postman.
+   ```text
+   http://localhost:8080
+   ```
 
-## Daftar Endpoint
+## 3. Daftar Endpoint API Lengkap Beserta Contoh Request & Response
 
-| Method | Endpoint | Fungsi |
-|---|---|---|
-| GET | `/api/users` | Menampilkan semua user |
-| GET | `/api/users/{id}` | Detail user dan ringkasan aktivitas |
-| POST | `/api/users` | Membuat user baru |
-| PUT | `/api/users/{id}` | Update user |
-| GET | `/api/venues` | Menampilkan semua venue |
-| GET | `/api/venues/{id}` | Detail venue dan daftar event |
-| POST | `/api/venues` | Membuat venue baru |
-| PUT | `/api/venues/{id}` | Update venue |
-| GET | `/api/events` | Menampilkan semua event |
-| GET | `/api/events/{id}` | Detail event |
-| POST | `/api/events` | Membuat event baru |
-| PUT | `/api/events/{id}` | Update event |
-| GET | `/api/tickets` | Menampilkan semua tiket |
-| GET | `/api/tickets/{id}` | Detail tiket |
-| POST | `/api/tickets` | Membeli tiket |
-| PUT | `/api/tickets/{id}/refund` | Refund tiket |
-| GET | `/api/events/price-summary` | Ringkasan harga tiket |
-| GET | `/api/reports/sales?eventId={id}` | Laporan penjualan event |
+Base URL: `http://localhost:8080`
 
-## Contoh Request Postman
+| Method | Endpoint | Keterangan |
+|--------|----------|------------|
+| **GET** | `/api/users` | Mendapatkan semua user |
+| **GET** | `/api/users/{id}` | Mendapatkan detail user (termasuk tiket/event) |
+| **POST** | `/api/users` | Membuat user baru |
+| **PUT** | `/api/users/{id}` | Memperbarui user |
+| **GET** | `/api/venues` | Mendapatkan semua venue |
+| **GET** | `/api/venues/{id}` | Mendapatkan detail venue |
+| **POST** | `/api/venues` | Membuat venue baru |
+| **PUT** | `/api/venues/{id}` | Memperbarui venue |
+| **GET** | `/api/events` | Mendapatkan semua event |
+| **GET** | `/api/events/price-summary` | Mendapatkan ringkasan harga event |
+| **GET** | `/api/events/{id}` | Mendapatkan detail event |
+| **POST** | `/api/events` | Membuat event baru |
+| **PUT** | `/api/events/{id}` | Memperbarui event |
+| **GET** | `/api/events/{id}/remaining-capacity`| Mendapatkan sisa kapasitas event |
+| **GET** | `/api/tickets` | Mendapatkan semua tiket |
+| **GET** | `/api/tickets/{id}` | Mendapatkan detail tiket |
+| **POST** | `/api/tickets` | Membeli tiket |
+| **PUT** | `/api/tickets/{id}/refund` | Melakukan refund tiket |
+| **GET** | `/api/reports/sales` | Laporan penjualan event |
 
-### 1. Membuat Organizer
+### Contoh Request & Response
 
-`POST /api/users`
-
-```json
-{
-  "name": "Bali Event Organizer",
-  "email": "info@balievent.id",
-  "phone": "081987654321",
-  "role": "organizer"
-}
-```
-
-### 2. Membuat Buyer
-
-`POST /api/users`
-
+#### A. Membuat User (Buyer)
+**Request (POST `/api/users`)**
 ```json
 {
   "name": "Kadek Surya",
@@ -99,11 +97,22 @@ http://localhost:8080
   "role": "buyer"
 }
 ```
+**Response (201 Created)**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "USR-12345",
+    "name": "Kadek Surya",
+    "email": "kadek.surya@email.com",
+    "phone": "081234567890",
+    "role": "buyer"
+  }
+}
+```
 
-### 3. Membuat Venue
-
-`POST /api/venues`
-
+#### B. Membuat Venue
+**Request (POST `/api/venues`)**
 ```json
 {
   "name": "GWK Cultural Park",
@@ -111,17 +120,27 @@ http://localhost:8080
   "maxCapacity": 8000
 }
 ```
+**Response (201 Created)**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "VNU-12345",
+    "name": "GWK Cultural Park",
+    "address": "Jl. Raya Uluwatu, Ungasan, Badung, Bali",
+    "maxCapacity": 8000
+  }
+}
+```
 
-### 4. Membuat Event Concert
-
-`POST /api/events`
-
+#### C. Membuat Event (Concert)
+**Request (POST `/api/events`)**
 ```json
 {
   "type": "concert",
   "name": "Bali Music Festival 2026",
-  "venueId": "VNU-ISI_ID_VENUE",
-  "organizerId": "USR-ISI_ID_ORGANIZER",
+  "venueId": "VNU-12345",
+  "organizerId": "USR-67890",
   "date": "2026-08-15",
   "basePrice": 250000,
   "capacity": {
@@ -131,55 +150,96 @@ http://localhost:8080
   }
 }
 ```
-
-### 5. Membeli Tiket
-
-`POST /api/tickets`
-
+**Response (201 Created)**
 ```json
 {
-  "eventId": "EVT-ISI_ID_EVENT",
-  "userId": "USR-ISI_ID_BUYER",
+  "success": true,
+  "data": {
+    "id": "EVT-12345",
+    "type": "concert",
+    "name": "Bali Music Festival 2026",
+    "venueId": "VNU-12345",
+    "organizerId": "USR-67890",
+    "date": "2026-08-15",
+    "basePrice": 250000
+  }
+}
+```
+
+#### D. Membeli Tiket
+**Request (POST `/api/tickets`)**
+```json
+{
+  "eventId": "EVT-12345",
+  "userId": "USR-12345",
   "category": "vip",
   "quantity": 2
 }
 ```
+**Response (201 Created)**
+```json
+{
+  "success": true,
+  "data": {
+    "id": "TKT-12345",
+    "eventId": "EVT-12345",
+    "userId": "USR-12345",
+    "category": "vip",
+    "quantity": 2,
+    "totalPrice": 500000,
+    "status": "active"
+  }
+}
+```
 
-### 6. Refund Tiket
+#### E. Refund Tiket
+**Request (PUT `/api/tickets/{id}/refund`)**
+*(Body kosong)*
+**Response (200 OK)**
+```json
+{
+  "success": true,
+  "message": "Tiket berhasil di-refund.",
+  "data": {
+    "id": "TKT-12345",
+    "status": "refunded"
+  }
+}
+```
 
-`PUT /api/tickets/{id}/refund`
+## 4. Struktur Proyek
 
-Tidak perlu body JSON.
+```text
+tugas2-oop-b-kelompok7/
+├── .git/
+├── .idea/
+├── .postman/
+├── lib/                             # Folder berisi dependency library (.jar)
+│   ├── jackson-annotations-2.13.3.jar
+│   ├── jackson-core-2.13.3.jar
+│   ├── jackson-databind-2.13.3.jar
+│   └── sqlite-jdbc-3.49.1.0.jar
+├── postman/
+├── src/                             # Folder source code utama
+│   ├── App.java                     # Main class penyedia web server
+│   ├── database/                    # Konfigurasi & koneksi SQLite
+│   ├── exception/                   # Custom class exception
+│   ├── handler/                     # Controller / Router handler API
+│   ├── model/                       # Data model OOP
+│   ├── repository/                  # Akses & manipulasi data database
+│   ├── server/                      # HTTP Server inti
+│   └── service/                     # Business logic
+├── database.db                      # File SQLite database
+├── readme.md                        # Dokumentasi proyek (file ini)
+└── tugas2_oop.postman_collection.json # File collection Postman untuk testing
+```
 
-## Skema Database
+## 5. Tabel Pembagian Tugas Anggota
 
-Database menggunakan SQLite dengan tabel:
-
-- `users`
-- `venues`
-- `events`
-- `capacities`
-- `tickets`
-
-Relasinya adalah user organizer dapat membuat banyak event, venue dapat memiliki banyak event, event memiliki banyak kategori kapasitas, event memiliki banyak tiket, dan user buyer dapat membeli banyak tiket.
-
-## Pembagian Tugas
-
-| Anggota | NIM | Tanggung Jawab |
-|---|---|---|
-| Erick | - | Model, service, repository, handler, database, README |
-| Anggota 2 | - | Sesuaikan dengan kelompok |
-| Anggota 3 | - | Sesuaikan dengan kelompok |
-| Anggota 4 | - | Sesuaikan dengan kelompok |
-
-## Skenario Demo
-
-1. Buat user organizer.
-2. Buat user buyer.
-3. Buat venue.
-4. Buat event concert.
-5. Cek detail event dan price list.
-6. Beli tiket kategori VIP.
-7. Cek laporan penjualan.
-8. Refund tiket concert.
-9. Buat sport match lalu coba refund untuk menunjukkan error karena `SportMatch` tidak mengimplementasikan `Refundable`.
+| Nama | NIM | Tugas |
+|------|-----|-------|
+| Erick Fedryano Tenora | 2505551033 |  |
+| Dewa Nyoman Prabu Wijaya Kusuma | 2505551040 | Events.java, Refundable.java, TicketRepository.java, VenueService.java, VenueHandler.java, TicketHandler.java |
+| Muhamad Brian Alfiansyah | 2505551081 | - |
+| Putu Aryadi Darma Kusuma | 250551148 | - | Venue.java, Ticket.java, eventrepository.java, Eventhandler.java, update Eventhandler.java
+| Putu Wahyu Dinata | 2505551150 | - |
