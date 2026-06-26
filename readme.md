@@ -243,3 +243,25 @@ tugas2-oop-b-kelompok7/
 | Muhamad Brian Alfiansyah | 2505551081 | create table capacities and tickets, fix bug, SportMatch.java, VenueRepository.java, EventService.java, Route on App.java, Test postman |
 | Putu Aryadi Darma Kusuma | 250551148 | Venue.java, Ticket.java, EventRepository.java, EventHandler.java |
 | Putu Wahyu Dinata | 2505551150 | User.java, EventNotFoundException.java, UserRepository.java, TicketHandler.java |
+
+## 6. Dokumentasi Postman
+
+// [GET] /api/users
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 210024" src="https://github.com/user-attachments/assets/d55a1b48-19d7-4f0b-980a-b1c8f0e0e8cd" />
+
+// [GET] /api/users/{id}
+// [GET] /api/venue
+// [GET] /api/venue/{id}
+// [GET] /api/events
+// [GET] /api/events/{id}
+// [GET] /api/tickets
+// [GET] /api/tickets/{id}
+// [GET] /api/venue/{id}
+// [GET] /api/venue/{id}
+// [GET] /api/
+// [GET] /api
+// [GET] /api
+// [GET] /api
+// [GET]
+// [GET]
+// [GET]
