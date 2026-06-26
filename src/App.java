@@ -139,16 +139,22 @@ public class App {
         server.put("/api/venues/{id}", VenueHandler::updateVenue);
 
         // --- 3. Route untuk Event ---
+        // PENTING: Daftarkan route spesifik sebelum route parameter dinamis!
         server.get("/api/events", EventHandler::getEvents);
+        server.get("/api/events/price-summary", EventHandler::priceSummary);
         server.get("/api/events/{id}", EventHandler::getEvent);
+        server.post("/api/events", EventHandler::createEvent);
+        server.put("/api/events/{id}", EventHandler::updateEvent);
         server.get("/api/events/{id}/remaining-capacity", EventHandler::getRemainingCapacity);
-        server.get("/api/events/{id}/sales-report", EventHandler::getSalesReport);
         
         // --- 4. Route untuk Ticket ---
         server.get("/api/tickets", TicketHandler::getTickets);
         server.get("/api/tickets/{id}", TicketHandler::getTicket);
         server.post("/api/tickets", TicketHandler::purchaseTicket);
         server.put("/api/tickets/{id}/refund", TicketHandler::refundTicket);
+
+        // --- 5. Route untuk Report ---
+        server.get("/api/reports/sales", EventHandler::getSalesReport);
 
         // Jalankan server
         System.out.printf("Server berjalan di http://localhost:%d%n", port);

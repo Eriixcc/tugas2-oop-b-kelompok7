@@ -142,7 +142,24 @@ public class Server {
                 System.err.println("Error saat memproses request: " + e.getMessage());
                 e.printStackTrace();
                 if (!res.isSent()) {
-                    res.sendError(500, "Internal Server Error: " + e.getMessage());
+                    Throwable cause = e;
+                    // Unwrap if it's wrapped
+                    while (cause.getCause() != null && cause != cause.getCause()) {
+                        cause = cause.getCause();
+                    }
+                    
+                    String msg = cause.getMessage();
+                    String className = cause.getClass().getSimpleName();
+                    
+                    if (className.equals("EventNotFoundException")) {
+                        res.sendError(404, msg);
+                    } else if (className.equals("TicketSoldOutException") 
+                            || className.equals("RefundNotAllowedException") 
+                            || cause instanceof IllegalArgumentException) {
+                        res.sendError(400, msg);
+                    } else {
+                        res.sendError(500, "Internal Server Error: " + msg);
+                    }
                 }
             }
         }
