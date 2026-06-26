@@ -250,18 +250,56 @@ tugas2-oop-b-kelompok7/
 <img width="959" height="599" alt="Cuplikan layar 2026-06-26 210024" src="https://github.com/user-attachments/assets/d55a1b48-19d7-4f0b-980a-b1c8f0e0e8cd" />
 
 // [GET] /api/users/{id}
-// [GET] /api/venue
-// [GET] /api/venue/{id}
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 211550" src="https://github.com/user-attachments/assets/b22f3501-43c9-422a-9d74-ae048b53adf3" />
+
+// [GET] /api/venues
+<img width="958" height="598" alt="Cuplikan layar 2026-06-26 210058" src="https://github.com/user-attachments/assets/34d1322b-54cb-4d18-b68b-ea14ea33a13d" />
+
+// [GET] /api/venues/{id}
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 211638" src="https://github.com/user-attachments/assets/0d4b2ac2-ba6a-433b-ba62-7b0b2c1fcfe4" />
+
 // [GET] /api/events
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 210844" src="https://github.com/user-attachments/assets/0dc49e58-75ea-4226-bf68-f1fb94518c79" />
+
 // [GET] /api/events/{id}
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 212028" src="https://github.com/user-attachments/assets/5258c222-2934-40db-8037-c6cf1fa26a1d" />
+
+// [GET] /api/events/{id}/remaining-capacity
+<img width="956" height="595" alt="Cuplikan layar 2026-06-26 214639" src="https://github.com/user-attachments/assets/c7eeb494-f7fe-4f3c-ba3a-97399ea29d6a" />
+
+// [GET] /api/events/{id}/sales-report
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 220142" src="https://github.com/user-attachments/assets/8fc8084e-6ef2-48c9-b712-c38556f76a16" />
+
 // [GET] /api/tickets
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 211031" src="https://github.com/user-attachments/assets/433f5815-bfba-45eb-a1d6-b2ff038744fe" />
+
 // [GET] /api/tickets/{id}
-// [GET] /api/venue/{id}
-// [GET] /api/venue/{id}
-// [GET] /api/
-// [GET] /api
-// [GET] /api
-// [GET] /api
-// [GET]
-// [GET]
-// [GET]
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 212721" src="https://github.com/user-attachments/assets/40d6536a-46ff-43c4-912e-63f25c74cb8d" />
+
+
+// [POST] /api/users
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 211338" src="https://github.com/user-attachments/assets/ad4a754e-9f67-47c5-97ca-0cbd7756bba0" />
+
+// [POST] /api/venues
+<img width="960" height="600" alt="Cuplikan layar 2026-06-26 213611" src="https://github.com/user-attachments/assets/cc966dbc-917c-43ef-b913-615826a86800" />
+
+// [POST] /api/events
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 223422" src="https://github.com/user-attachments/assets/5f61f9b5-7be0-4e25-9a25-b0158f39f192" />
+
+// [POST] /api/tickets
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 223633" src="https://github.com/user-attachments/assets/99e2bb1c-0aeb-4d23-9a69-47513bc6443c" />
+
+
+// [PUT] /api/users/{id}
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 224050" src="https://github.com/user-attachments/assets/1aed2193-7f86-4d86-a68e-32b0cf46e416" />
+
+// [PUT] /api/venues/{id}
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 213710" src="https://github.com/user-attachments/assets/5f5c6129-cf4d-4c4d-a25c-e1aa2bc4162c" />
+
+// [PUT] /api/events/{id}
+<img width="960" height="600" alt="image" src="https://github.com/user-attachments/assets/eafef790-3cbe-448b-8897-b8fdcaf16391" />
+
+// [PUT] /api/tickets/{id}/refund
+<img width="960" height="600" alt="Cuplikan layar 2026-06-26 220036" src="https://github.com/user-attachments/assets/fabe55b3-570f-4976-83df-7862937edb6e" />
+
+
