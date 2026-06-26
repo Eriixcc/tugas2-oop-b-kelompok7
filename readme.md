@@ -241,5 +241,5 @@ tugas2-oop-b-kelompok7/
 | Erick Fedryano Tenora | 2505551033 |  |
 | Dewa Nyoman Prabu Wijaya Kusuma | 2505551040 | Events.java, Refundable.java, TicketRepository.java, VenueService.java, VenueHandler.java, TicketHandler.java |
 | Muhamad Brian Alfiansyah | 2505551081 | - |
-| Putu Aryadi Darma Kusuma | 250551148 | - |
+| Putu Aryadi Darma Kusuma | 250551148 | - | Venue.java, Ticket.java, eventrepository.java, Eventhandler.java, update Eventhandler.java
 | Putu Wahyu Dinata | 2505551150 | - |
