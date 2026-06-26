@@ -211,8 +211,6 @@ Base URL: `http://localhost:8080`
 
 ```text
 tugas2-oop-b-kelompok7/
-├── .git/
-├── .idea/
 ├── .postman/
 ├── lib/                             # Folder berisi dependency library (.jar)
 │   ├── jackson-annotations-2.13.3.jar
@@ -220,7 +218,8 @@ tugas2-oop-b-kelompok7/
 │   ├── jackson-databind-2.13.3.jar
 │   └── sqlite-jdbc-3.49.1.0.jar
 ├── postman/
-├── src/                             # Folder source code utama
+├── src/  
+│   ├── .idea/                       # Folder source code utama
 │   ├── App.java                     # Main class penyedia web server
 │   ├── database/                    # Konfigurasi & koneksi SQLite
 │   ├── exception/                   # Custom class exception
@@ -228,7 +227,8 @@ tugas2-oop-b-kelompok7/
 │   ├── model/                       # Data model OOP
 │   ├── repository/                  # Akses & manipulasi data database
 │   ├── server/                      # HTTP Server inti
-│   └── service/                     # Business logic
+│   ├── service/                     # Business logic
+│   └── tugas2.iml
 ├── database.db                      # File SQLite database
 ├── readme.md                        # Dokumentasi proyek (file ini)
 └── tugas2_oop.postman_collection.json # File collection Postman untuk testing
