@@ -238,8 +238,8 @@ tugas2-oop-b-kelompok7/
 
 | Nama | NIM | Tugas |
 |------|-----|-------|
-| Erick Fedryano Tenora | 2505551033 |  |
+| Erick Fedryano Tenora | 2505551033 | Database, Concert.java, Seminar.java, UserHandler.java, UserService.java, Readme.md |
 | Dewa Nyoman Prabu Wijaya Kusuma | 2505551040 | Events.java, Refundable.java, TicketRepository.java, VenueService.java, VenueHandler.java, TicketHandler.java |
-| Muhamad Brian Alfiansyah | 2505551081 | - |
-| Putu Aryadi Darma Kusuma | 250551148 | - | Venue.java, Ticket.java, eventrepository.java, Eventhandler.java, update Eventhandler.java
-| Putu Wahyu Dinata | 2505551150 | - |
+| Muhamad Brian Alfiansyah | 2505551081 | create table capacities and tickets, fix bug, SportMatch.java, VenueRepository.java, EventService.java, Route on App.java, Test postman |
+| Putu Aryadi Darma Kusuma | 250551148 | Venue.java, Ticket.java, EventRepository.java, EventHandler.java |
+| Putu Wahyu Dinata | 2505551150 | User.java, EventNotFoundException.java, UserRepository.java, TicketHandler.java |
