@@ -210,9 +210,13 @@ public class EventHandler {
             Response res)
             throws Exception {
 
-        String eventId = req.getQueryParam("eventId");
+        String eventId = req.getPathParam("id");
         if (eventId == null || eventId.trim().isEmpty()) {
-            res.sendError(400, "Query parameter eventId wajib diisi");
+            eventId = req.getQueryParam("eventId");
+        }
+        
+        if (eventId == null || eventId.trim().isEmpty()) {
+            res.sendError(400, "Event ID (path atau query param) wajib diisi");
             return;
         }
 

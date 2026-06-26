@@ -146,6 +146,7 @@ public class App {
         server.post("/api/events", EventHandler::createEvent);
         server.put("/api/events/{id}", EventHandler::updateEvent);
         server.get("/api/events/{id}/remaining-capacity", EventHandler::getRemainingCapacity);
+        server.get("/api/events/{id}/sales-report", EventHandler::getSalesReport);
         
         // --- 4. Route untuk Ticket ---
         server.get("/api/tickets", TicketHandler::getTickets);
