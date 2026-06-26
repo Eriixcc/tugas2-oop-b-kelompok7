@@ -101,9 +101,27 @@ public class TicketRepository {
         return null;
     }
 
+    private String generateId() throws SQLException {
+        String sql = "SELECT id FROM tickets ORDER BY id DESC LIMIT 1";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                String lastId = resultSet.getString(1);
+                try {
+                    int num = Integer.parseInt(lastId.split("-")[1]);
+                    return String.format("TKT-%03d", num + 1);
+                } catch (Exception e) {
+                    // fallthrough
+                }
+            }
+        }
+        return "TKT-001";
+    }
+
     public Ticket create(Ticket ticket) throws SQLException {
         if (ticket.getId() == null || ticket.getId().trim().isEmpty()) {
-            ticket.setId(RepoUtil.generateId("TKT"));
+            ticket.setId(generateId());
         }
 
         String sql = "INSERT INTO tickets("

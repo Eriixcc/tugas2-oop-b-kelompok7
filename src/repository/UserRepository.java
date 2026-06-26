@@ -72,9 +72,27 @@ public class UserRepository {
         return null;
     }
 
+    private String generateId() throws SQLException {
+        String sql = "SELECT id FROM users ORDER BY id DESC LIMIT 1";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                String lastId = resultSet.getString(1);
+                try {
+                    int num = Integer.parseInt(lastId.split("-")[1]);
+                    return String.format("USR-%03d", num + 1);
+                } catch (Exception e) {
+                    // fallthrough
+                }
+            }
+        }
+        return "USR-001";
+    }
+
     public User create(User user) throws SQLException {
         if (user.getId() == null || user.getId().trim().isEmpty()) {
-            user.setId(RepoUtil.generateId("USR"));
+            user.setId(generateId());
         }
 
         user.setRole(normalizeRole(user.getRole()));

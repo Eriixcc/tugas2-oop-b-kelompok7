@@ -156,9 +156,27 @@ public class EventRepository {
         }
     }
 
+    private String generateId() throws SQLException {
+        String sql = "SELECT id FROM events ORDER BY id DESC LIMIT 1";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                String lastId = resultSet.getString(1);
+                try {
+                    int num = Integer.parseInt(lastId.split("-")[1]);
+                    return String.format("EVT-%03d", num + 1);
+                } catch (Exception e) {
+                    // fallthrough
+                }
+            }
+        }
+        return "EVT-001";
+    }
+
     public Event create(Event event, Map<String, Integer> capacities) throws SQLException {
         if (event.getId() == null || event.getId().trim().isEmpty()) {
-            event.setId(RepoUtil.generateId("EVT"));
+            event.setId(generateId());
         }
 
         event.setType(getTypeFromEvent(event));

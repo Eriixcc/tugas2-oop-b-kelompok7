@@ -54,9 +54,27 @@ public class VenueRepository {
         return null;
     }
 
+    private String generateId() throws SQLException {
+        String sql = "SELECT id FROM venues ORDER BY id DESC LIMIT 1";
+        try (Connection connection = DatabaseManager.getConnection();
+             PreparedStatement statement = connection.prepareStatement(sql);
+             ResultSet resultSet = statement.executeQuery()) {
+            if (resultSet.next()) {
+                String lastId = resultSet.getString(1);
+                try {
+                    int num = Integer.parseInt(lastId.split("-")[1]);
+                    return String.format("VNU-%03d", num + 1);
+                } catch (Exception e) {
+                    // fallthrough
+                }
+            }
+        }
+        return "VNU-001";
+    }
+
     public Venue create(Venue venue) throws SQLException {
         if (venue.getId() == null || venue.getId().trim().isEmpty()) {
-            venue.setId(RepoUtil.generateId("VNU"));
+            venue.setId(generateId());
         }
 
         String sql = "INSERT INTO venues(id, name, address, max_capacity) VALUES(?, ?, ?, ?)";
