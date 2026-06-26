@@ -287,7 +287,7 @@ tugas2-oop-b-kelompok7/
 <img width="959" height="599" alt="Cuplikan layar 2026-06-26 223422" src="https://github.com/user-attachments/assets/5f61f9b5-7be0-4e25-9a25-b0158f39f192" />
 
 // [POST] /api/tickets
-<img width="959" height="599" alt="Cuplikan layar 2026-06-26 223633" src="https://github.com/user-attachments/assets/99e2bb1c-0aeb-4d23-9a69-47513bc6443c" />
+<img width="959" height="599" alt="Cuplikan layar 2026-06-26 224827" src="https://github.com/user-attachments/assets/9b16d39e-d1c1-46d3-9019-2caf991ee7f5" />
 
 
 // [PUT] /api/users/{id}
